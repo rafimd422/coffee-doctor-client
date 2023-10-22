@@ -21,7 +21,7 @@ const Navbar = () => {
 {navItems}
       </ul>
     </div>
-    <Link className="btn btn-ghost normal-case text-xl">
+    <Link className="btn btn-ghost normal-case text-xl -mt-6">
         <img src={Logo} alt="Logo" />
     </Link>
   </div>
