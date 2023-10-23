@@ -4,7 +4,7 @@ import { FaPhoneAlt } from "react-icons/fa"
 
 const ContactInfo = () => {
   return (
-<div className='md:max-h-[250px] h-fit bg-neutral-900 rounded-md lg:px-4 lg:py-1 py-6'>
+<div className='md:max-h-[250px] h-fit bg-neutral-900 rounded-md lg:px-4 lg:py-1 py-6 my-12'>
   <div className="flex lg:gap-4 flex-wrap justify-center">
     <div className="flex text-white items-center gap-3 p-6">
       <div>
