@@ -1,4 +1,5 @@
 import loginphoto from '../../assets/images/login/login.svg'
+import { Link } from 'react-router-dom';
 
 
 const Login = () => {
@@ -40,8 +41,9 @@ const Login = () => {
           </label>
         </div>
         <div className="form-control mt-6">
-          
           <input className="btn btn-primary" type="submit" value="Submit" />
+
+          <p className='my-2'>Don't have an Account? <Link to={'/register'} className='font-semibold text-green-800'>Register Now</Link></p>
         </div>
       </form>
     </div>
