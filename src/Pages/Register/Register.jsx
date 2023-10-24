@@ -1,8 +1,13 @@
+import { useContext } from 'react';
 import loginphoto from '../../assets/images/login/login.svg'
 import { Link } from 'react-router-dom';
+import { AuthContext } from './../../Context/AuthProvider';
+import { Result } from 'postcss';
 
 
 const Register = () => {
+
+const {createUser} = useContext(AuthContext)
 
     const handleRegister = e =>{
         e.preventDefault()
@@ -11,7 +16,15 @@ const Register = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, photo, email, password)
+        createUser(email, password)
+        .then(result => {
+       const user = result.user;
+       console.log(user)
+        })
+        .catch(error => {
+          console.log(error.message)
+        })
+
        }
     
 
@@ -35,10 +48,10 @@ const Register = () => {
           <input type="URL" placeholder="Your Photo URL" name='photo' className="input input-bordered" required />
         </div>
         <div className="form-control my-2">
-          <input type="email" placeholder="email" name='email' className="input input-bordered" required />
+          <input type="email" placeholder="Email" name='email' className="input input-bordered" required />
         </div>
         <div className="form-control">
-          <input type="password" name='password' placeholder="password" className="input input-bordered" required />
+          <input type="password" name='password' placeholder="Password" className="input input-bordered" required />
         </div>
         <div className="form-control mt-6">
           <input className="btn btn-primary" type="submit" value="Submit" />
