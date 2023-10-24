@@ -16,7 +16,7 @@ const {signIn} = useContext(AuthContext)
 signIn(email,password)
 .then(result => {
   console.log(result.user)
-}).catch(error = cosole.log(error.message))
+}).catch(error => console.log(error.message))
 
   }
 

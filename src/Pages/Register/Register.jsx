@@ -2,7 +2,10 @@ import { useContext } from 'react';
 import loginphoto from '../../assets/images/login/login.svg'
 import { Link } from 'react-router-dom';
 import { AuthContext } from './../../Context/AuthProvider';
-import { Result } from 'postcss';
+import { updateProfile } from 'firebase/auth';
+import auth from '../../Firebase/firebase.config';
+import Swal from 'sweetalert2';
+
 
 
 const Register = () => {
@@ -19,9 +22,27 @@ const {createUser} = useContext(AuthContext)
         createUser(email, password)
         .then(result => {
        const user = result.user;
+       updateProfile(auth.currentUser, {
+        displayName: name, photoURL:photo
+      }).then(() => {
+        console.log('profile updated')
+        Swal.fire({
+          icon: 'success',
+          title: 'Registration Successfull',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }).catch((error) => {
+        console.log(error.message)
+      });
        console.log(user)
         })
         .catch(error => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: error.message,
+          })
           console.log(error.message)
         })
 
