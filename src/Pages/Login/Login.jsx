@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import loginphoto from '../../assets/images/login/login.svg'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import Swal from 'sweetalert2';
 
 
 const Login = () => {
@@ -16,7 +17,21 @@ const {signIn} = useContext(AuthContext)
 signIn(email,password)
 .then(result => {
   console.log(result.user)
-}).catch(error => console.log(error.message))
+  Swal.fire({
+    icon: 'success',
+    title: 'Log in successfull',
+    showConfirmButton: false,
+    timer: 1500
+  })
+}).catch(error =>{
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: error.message,
+  })
+  console.log(error.message)
+}
+  )
 
   }
 
