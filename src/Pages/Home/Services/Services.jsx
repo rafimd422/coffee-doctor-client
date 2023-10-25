@@ -6,7 +6,7 @@ const Services = () => {
     const [services,setServices] = useState([])
 
 useEffect(() =>{
- axios.get('services.json')
+ axios.get('http://localhost:4000/services')
  .then(data => setServices(data.data))
 },[])
 
@@ -22,7 +22,7 @@ useEffect(() =>{
 <div className='grid lg:grid-cols-3 md:grid-cols-2 justify-center gap-4 py-8'>
 
 
-{services.map(services =>     <div key={services.service_id} className="card card-compact w-96 bg-base-100 shadow-md mx-auto">
+{services.map(services => <div key={services.service_id} className="card card-compact w-96 bg-base-100 shadow-md mx-auto">
   <figure><img src={services.img} className='max-h-[208px]' alt="Shoes" /></figure>
   <div className="card-body">
 <div className="flex justify-between items-center jus">
