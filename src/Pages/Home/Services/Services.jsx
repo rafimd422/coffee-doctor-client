@@ -16,8 +16,8 @@ useEffect(() =>{
       <div className='text-center'><h3 className='text-2xl font-bold text-orange-600'>
         Services
         </h3>
-        <h2 className='text-5xl lg:font-extrabold font-bold text-neutral-900 mb-2'>Our services Area</h2>
-        <p className='max-w-[710px] mx-auto text-neutral-500 text-base capitalize leading-[30px] my-2'>The majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. </p>
+        <h2 className='text-5xl lg:font-extrabold font-bold light:text-neutral-900 mb-2'>Our services Area</h2>
+        <p className='max-w-[710px] mx-auto light:text-neutral-500 text-base capitalize leading-[30px] my-2'>The majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. </p>
         </div>
 <div className='grid lg:grid-cols-3 md:grid-cols-2 justify-center gap-4 py-8'>
 

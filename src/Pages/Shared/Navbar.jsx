@@ -1,7 +1,22 @@
+import { FaMoon, FaSun } from 'react-icons/fa6'
 import Logo from '../../assets/logo.svg'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../../Context/AuthProvider'
+
+
 
 const Navbar = () => {
+
+const {toggle,setToggle} = useContext(AuthContext)
+
+
+const toggler = () => {
+  const newToggle = !toggle;
+  setToggle(newToggle);
+  localStorage.setItem('toggle', newToggle);
+};
+
 
     const navItems = <>
             <li><Link to={'/'}>Home</Link></li>
@@ -30,7 +45,14 @@ const Navbar = () => {
     {navItems}
     </ul>
   </div>
+
+
   <div className="navbar-end">
+<div onClick={toggler}>
+{toggle ?   <FaSun  className='text-2xl me-4 cursor-pointer' /> :   < FaMoon className='text-2xl me-4 cursor-pointer' />}
+</div>
+
+
     <a className="btn btn-outline btn-warning">Appointment</a>
   </div>
 </div>
