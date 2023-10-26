@@ -8,7 +8,7 @@ import { AuthContext } from '../../Context/AuthProvider'
 
 const Navbar = () => {
 
-const {toggle,setToggle} = useContext(AuthContext)
+const {toggle,setToggle,user,logOut} = useContext(AuthContext)
 
 
 const toggler = () => {
@@ -20,10 +20,9 @@ const toggler = () => {
 
     const navItems = <>
             <li><Link to={'/'}>Home</Link></li>
-            <li><Link to={'/about'}>About</Link></li>
-            <li><Link to={'/services'}>Services</Link></li>
             <li><Link to={'/blog'}>Blog</Link></li>
             <li><Link to={'/contact'}>Contact</Link></li>
+       {user !== null ?   <li onClick={logOut}><Link to={'/'}>Log Out</Link></li> : <li><Link to={'/login'}>Log in</Link></li> }
     </>
   return (
 <div className="navbar bg-base-100 h-28 mb-4">

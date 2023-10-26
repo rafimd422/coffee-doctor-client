@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import loginphoto from '../../assets/images/login/login.svg'
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import Swal from 'sweetalert2';
 
@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 const Login = () => {
 
 const {signIn} = useContext(AuthContext)
-
+const Navigate = useNavigate()
    const handleLogin = e =>{
     e.preventDefault()
     const form = e.target;
@@ -23,6 +23,8 @@ signIn(email,password)
     showConfirmButton: false,
     timer: 1500
   })
+
+  Navigate('/')
 }).catch(error =>{
   Swal.fire({
     icon: 'error',
