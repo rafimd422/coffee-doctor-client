@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios';
 import {FaArrowRightLong} from "react-icons/fa6";
+import { Link } from 'react-router-dom';
 
 const Services = () => {
     const [services,setServices] = useState([])
@@ -31,7 +32,9 @@ useEffect(() =>{
     <p className='text-orange-600 text-xl font-semibold'>Price: {services.price}</p>
     </div>
 
-    <FaArrowRightLong className='text-xl me-6 cursor-pointer' />
+<Link to={`/servicedetails/${services._id}`}>
+<FaArrowRightLong className='text-xl me-6 cursor-pointer' />
+</Link>
 </div>
   </div>
 </div>)}
