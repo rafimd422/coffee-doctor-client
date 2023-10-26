@@ -1,6 +1,6 @@
 import { FaMoon, FaSun } from 'react-icons/fa6'
 import Logo from '../../assets/logo.svg'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../../Context/AuthProvider'
 
@@ -19,10 +19,13 @@ const toggler = () => {
 
 
     const navItems = <>
-            <li><Link to={'/'}>Home</Link></li>
-            <li><Link to={'/blog'}>Blog</Link></li>
-            <li><Link to={'/contact'}>Contact</Link></li>
-       {user !== null ?   <li onClick={logOut}><Link to={'/'}>Log Out</Link></li> : <li><Link to={'/login'}>Log in</Link></li> }
+            <li><NavLink to={'/'}>Home</NavLink></li>
+            <li><NavLink to={'/blog'}>Blog</NavLink></li>
+            <li><NavLink to={'/contact'}>Contact</NavLink></li>
+       {user !== null ?   <>
+        <li><NavLink to={'/bookings'}>Bookings</NavLink></li>
+        <li onClick={logOut}><NavLink to={'/'}>Log Out</NavLink></li>
+       </> : <li><NavLink to={'/login'}>Log in</NavLink></li> }
     </>
   return (
 <div className="navbar bg-base-100 h-28 mb-4">

@@ -22,6 +22,7 @@ const signIn = (email, password) =>{
 }
 
 const logOut = () => {
+  setLoading(true)
   signOut(auth)
 }
 

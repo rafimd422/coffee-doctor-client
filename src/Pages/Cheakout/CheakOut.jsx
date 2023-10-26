@@ -1,6 +1,6 @@
 
 import { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from './../../Context/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -8,7 +8,7 @@ const CheakOut = () => {
     const data = useLoaderData()
     console.log(data)
     const {user} = useContext(AuthContext)
-    
+    const navigate = useNavigate()
 const handleSubmit = e => {
     e.preventDefault()
     const form = e.target;
@@ -33,6 +33,7 @@ axios.post('http://localhost:4000/booking', cheakOutData, {
         'Service Booked Successfully!',
         'success'
       )
+navigate('/bookings')
   })
   .catch(error => {
     console.log("An error occurred:", error);
