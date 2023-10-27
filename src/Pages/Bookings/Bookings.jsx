@@ -45,11 +45,27 @@ const handleDelete = id => {
     'Deleted!',
     'Your file has been deleted.',
     'success'
-  )
-}
-})
-}
+  )}
+})}
 
+const handleConfirm = (id) => {
+  axios
+    .patch(`http://localhost:4000/booking/${id}`, { status: "Confirmed" }, {
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+    .then((response) => {
+      console.log(response?.data);
+      if (response?.data.acknowledged) {
+        console.log('Service modified');
+        console.log(response)
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
 
 
 
@@ -88,12 +104,8 @@ const handleDelete = id => {
         <td>{bookingData.service}</td>
         <td>{bookingData.date}</td>
         <td>{bookingData.due}</td>
-        <td>status</td>
-
+       {bookingData?.status === 'Confirmed' ? <td><span className="text-green-500 font-bold">Confirmed</span></td> :  <td><button onClick={()=>handleConfirm(bookingData._id)}>{bookingData.status}</button></td>}
       </tr>)}
-
-
-
     </tbody>
     
   </table>

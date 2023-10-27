@@ -18,7 +18,7 @@ const handleSubmit = e => {
     const due = form.due.value;
     const message = form.message.value;
     const date = form.date.value;
-    const cheakOutData = {name,email,service:data?.data.title,phone,due,img: data?.data.img ,message,date}
+    const cheakOutData = {name,email,service:data?.data.title,phone,due,img: data?.data.img ,message,date,status:'Please Confirm' }
 console.log(cheakOutData)
 
 axios.post('http://localhost:4000/booking', cheakOutData, {
