@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import {FaArrowRightLong} from "react-icons/fa6";
+import {FaArrowRightLong, FaCentercode} from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 
 const Services = () => {
-    const [services,setServices] = useState([])
 
-useEffect(() =>{
- axios.get('http://localhost:4000/services')
- .then(data => setServices(data.data))
-},[])
+
+const { isPending, data:services } = useQuery({
+  queryKey: ['services'],
+  queryFn: () =>{
+    return axios.get('http://localhost:4000/services')
+}})
+
+if (isPending) return <div className="flex justify-center items-center h-[40vh] w-full"><span className="text-center loading loading-bars loading-lg"></span></div>
 
 
   return (
@@ -23,7 +26,7 @@ useEffect(() =>{
 <div className='grid lg:grid-cols-3 md:grid-cols-2 justify-center gap-4 py-8'>
 
 
-{services.map(services => <div key={services.service_id} className="card card-compact w-96 bg-base-100 shadow-md mx-auto">
+{services?.data.map(services => <div key={services.service_id} className="card card-compact w-96 bg-base-100 shadow-md mx-auto">
   <figure><img src={services.img} className='max-h-[208px]' alt="Shoes" /></figure>
   <div className="card-body">
 <div className="flex justify-between items-center jus">

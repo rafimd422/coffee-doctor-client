@@ -48,7 +48,7 @@ const handleDelete = id => {
   )}
 })}
 
-const handleConfirm = (id) => {
+const handleConfirm = id => {
   axios
     .patch(`http://localhost:4000/booking/${id}`, { status: "Confirmed" }, {
       headers: {
@@ -61,6 +61,7 @@ const handleConfirm = (id) => {
         console.log('Service modified');
         console.log(response)
       }
+      queryClient.invalidateQueries(["bookData"]);
     })
     .catch((error) => {
       console.error(error);

@@ -1,10 +1,8 @@
-import React from 'react'
 import { Link, useLoaderData } from 'react-router-dom'
 
 const ServiceDetails = () => {
     const data = useLoaderData()
     const serviceDetails = data.data;
-console.log(serviceDetails)
     return (
     <div className='h-screen'>
 <Link to={`/cheakout/${serviceDetails._id}`}>

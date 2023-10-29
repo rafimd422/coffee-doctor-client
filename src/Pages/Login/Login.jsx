@@ -1,11 +1,23 @@
 import { useContext } from "react";
 import loginphoto from "../../assets/images/login/login.svg";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn,loading } = useContext(AuthContext);
+const location = useLocation()
+console.log(location)
+if(loading){
+  return <>
+  <div className="md:h-screen h-[80vh] flex justify-center items-center">
+  <span className="loading loading-bars loading-xl"></span>
+  </div>
+  </>
+}
+
+
+
   const Navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
@@ -21,8 +33,11 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-
+if(location.pathname === '/login'){
         Navigate("/");
+      } else{
+        Navigate(location.pathname)
+      }
       })
       .catch((error) => {
         Swal.fire({
