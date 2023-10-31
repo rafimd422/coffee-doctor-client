@@ -11,7 +11,7 @@ const Bookings = () => {
   const { isPending, data } = useQuery({
     queryKey: ["bookData"],
     queryFn: () => {
-      return axios.get(`http://localhost:4000/booking?${user?.email}`);
+      return axios.get(`http://localhost:4000/booking?${user?.email}`,{withCredentials:true});
     },
   });
 
@@ -39,7 +39,7 @@ const handleDelete = id => {
     }
   }) .then( data => {
     queryClient.invalidateQueries(["bookData"]);
-    console.log(data)}
+   }
   ).catch(error => console.log(error.message))
   Swal.fire(
     'Deleted!',
@@ -105,7 +105,7 @@ const handleConfirm = id => {
         <td>{bookingData.service}</td>
         <td>{bookingData.date}</td>
         <td>{bookingData.due}</td>
-       {bookingData?.status === 'Confirmed' ? <td><span className="text-green-500 font-bold">Confirmed</span></td> :  <td><button onClick={()=>handleConfirm(bookingData._id)}>{bookingData.status}</button></td>}
+       {bookingData?.status === 'Confirmed' ? <td><span className="bg-green-500 p-3 rounded-lg text-white font-bold">Confirmed</span></td> :  <td><button className="bg-red-500 p-3 rounded-lg text-white font-bold" onClick={()=>handleConfirm(bookingData._id)}>{bookingData.status}</button></td>}
       </tr>)}
     </tbody>
     

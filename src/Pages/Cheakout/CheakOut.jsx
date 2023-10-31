@@ -6,7 +6,6 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 const CheakOut = () => {
     const data = useLoaderData()
-    console.log(data)
     const {user} = useContext(AuthContext)
     const navigate = useNavigate()
 const handleSubmit = e => {
