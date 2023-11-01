@@ -9,11 +9,19 @@ const Bookings = () => {
   const queryClient = useQueryClient();
 
   const { isPending, data } = useQuery({
-    queryKey: ["bookData"],
+    queryKey: ["bookData", user?.email],
     queryFn: () => {
-      return axios.get(`http://localhost:4000/booking?${user?.email}`,{withCredentials:true});
+      const userEmail = user.email
+      return axios.get(`http://localhost:4000/booking?email=${userEmail}`, {
+        withCredentials: true,
+      });
     },
-  });
+    refetchOnMount: true,
+    refetchOnWindowFocus: true,
+    
+    
+  },);
+
 
   if (isPending)
     return (

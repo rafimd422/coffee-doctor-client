@@ -41,7 +41,6 @@ navigate('/bookings')
 }
 
 
-
   return (
 <section className="p-6 md:px-10 py-24 bg-base-200 dark:bg-gray-800 dark:text-gray-50">
 	<form className="space-y-12" onSubmit={handleSubmit}>
