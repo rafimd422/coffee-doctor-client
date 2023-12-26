@@ -41,11 +41,11 @@ const WhyChooseUs = () => {
           humour, or randomised words which don't look even slightly believable.{" "}
         </p>
       </div>
-      <div className="flex flex-wrap gap-4 my-8 justify-center px-4">
+      <div className="flex flex-wrap gap-2 my-8 justify-center px-4">
         {WhyChooseUs.map((choose) => (
           <div
             key={choose.imgTitle}
-            className="w-[170px] h-[156px] rounded-[10px] border border-gray-200 my-4 flex flex-col justify-center"
+            className="w-[180px] h-[176px] p-4 rounded-[10px] border border-gray-200 my-4 flex flex-col justify-center"
           >
             <img src={choose.img} className="p-14" alt="" />
 
